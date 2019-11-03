@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据结构,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="引言计算机解决问题的步骤1. 从具体的问题抽象出一个适当的数学模型 2. 设计一个求解该数学模型的算法 3. 用计算机语言编写实现该算法的程序, 调试和运行程序直至最终得到问题的解答  数据结构 (Data Structure)数据结构是组织数据和存储数据的方式 数据结构是指一组相互之间存在一种或多种特定关系的数据的组织方式和它们在计算机内的存储方式, 以及定义在该组数据上的一组操作. 数据的逻辑">
+<meta name="keywords" content="数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构第1集 - 基础知识">
+<meta property="og:url" content="http://yundanfengqing.com/2019/10/28/数据结构第1集-基础知识/index.html">
+<meta property="og:site_name" content="云淡风轻">
+<meta property="og:description" content="引言计算机解决问题的步骤1. 从具体的问题抽象出一个适当的数学模型 2. 设计一个求解该数学模型的算法 3. 用计算机语言编写实现该算法的程序, 调试和运行程序直至最终得到问题的解答  数据结构 (Data Structure)数据结构是组织数据和存储数据的方式 数据结构是指一组相互之间存在一种或多种特定关系的数据的组织方式和它们在计算机内的存储方式, 以及定义在该组数据上的一组操作. 数据的逻辑">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yundanfengqing.com/2019/10/28/数据结构第1集-基础知识/解决问题步骤.png">
+<meta property="og:image" content="http://yundanfengqing.com/2019/10/28/数据结构第1集-基础知识/数据结构.png">
+<meta property="og:image" content="http://yundanfengqing.com/2019/10/28/数据结构第1集-基础知识/数据.png">
+<meta property="og:image" content="http://yundanfengqing.com/2019/10/28/数据结构第1集-基础知识/集合结构.jpg">
+<meta property="og:image" content="http://yundanfengqing.com/2019/10/28/数据结构第1集-基础知识/线性结构.jpg">
+<meta property="og:image" content="http://yundanfengqing.com/2019/10/28/数据结构第1集-基础知识/树形结构.jpg">
+<meta property="og:image" content="http://yundanfengqing.com/2019/10/28/数据结构第1集-基础知识/图形结构.jpg">
+<meta property="og:updated_time" content="2019-10-28T09:47:22.169Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构第1集 - 基础知识">
+<meta name="twitter:description" content="引言计算机解决问题的步骤1. 从具体的问题抽象出一个适当的数学模型 2. 设计一个求解该数学模型的算法 3. 用计算机语言编写实现该算法的程序, 调试和运行程序直至最终得到问题的解答  数据结构 (Data Structure)数据结构是组织数据和存储数据的方式 数据结构是指一组相互之间存在一种或多种特定关系的数据的组织方式和它们在计算机内的存储方式, 以及定义在该组数据上的一组操作. 数据的逻辑">
+<meta name="twitter:image" content="http://yundanfengqing.com/2019/10/28/数据结构第1集-基础知识/解决问题步骤.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yundanfengqing.com/2019/10/28/数据结构第1集-基础知识/">
+
+
+
+
+
+  <title>数据结构第1集 - 基础知识 | 云淡风轻</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3591a56922dcbb60f57f70955e3228e3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">云淡风轻</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">这, 只是一种可能, 未必是唯一的可能!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yundanfengqing.com/2019/10/28/数据结构第1集-基础知识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="云淡风轻">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云淡风轻">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据结构第1集 - 基础知识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-28T17:32:47+08:00">
+                2019-10-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.8k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><h3 id="计算机解决问题的步骤"><a href="#计算机解决问题的步骤" class="headerlink" title="计算机解决问题的步骤"></a>计算机解决问题的步骤</h3><pre><code>1. 从具体的问题抽象出一个适当的数学模型
+2. 设计一个求解该数学模型的算法
+3. 用计算机语言编写实现该算法的程序, 调试和运行程序直至最终得到问题的解答</code></pre><img src="/2019/10/28/数据结构第1集-基础知识/解决问题步骤.png" title="解决问题步骤">
+
+<h3 id="数据结构-Data-Structure"><a href="#数据结构-Data-Structure" class="headerlink" title="数据结构 (Data Structure)"></a>数据结构 (Data Structure)</h3><p>数据结构是<strong>组织数据</strong>和<strong>存储数据</strong>的方式</p>
+<p>数据结构是指一组相互之间存在一种或多种特定关系的数据的<strong>组织方式</strong>和它们在计算机内的<strong>存储方式</strong>, 以及定义在该组数据上的<strong>一组操作</strong>.</p>
+<h3 id="数据的逻辑结构"><a href="#数据的逻辑结构" class="headerlink" title="数据的逻辑结构"></a>数据的逻辑结构</h3><p>数据及数据的组织方式被称为逻辑结构</p>
+<h3 id="数据结构和算法和程序的关系"><a href="#数据结构和算法和程序的关系" class="headerlink" title="数据结构和算法和程序的关系"></a>数据结构和算法和程序的关系</h3><p>程序 = 数据结构 + 算法</p>
+<img src="/2019/10/28/数据结构第1集-基础知识/数据结构.png" title="数据结构">
+
+<h2 id="基本概念和术语"><a href="#基本概念和术语" class="headerlink" title="基本概念和术语"></a>基本概念和术语</h2><h3 id="数据-Data"><a href="#数据-Data" class="headerlink" title="数据 (Data)"></a>数据 (Data)</h3><p>所有能被计算机存储处理的对象</p>
+<h3 id="数据元素-Data-Element"><a href="#数据元素-Data-Element" class="headerlink" title="数据元素 (Data Element)"></a>数据元素 (Data Element)</h3><p>数据为集合, 集合当中一个个的个体即为该集合的一个元素. 数据元素是数据的<strong>基本单位</strong></p>
+<h3 id="数据项-Data-Item"><a href="#数据项-Data-Item" class="headerlink" title="数据项 (Data Item)"></a>数据项 (Data Item)</h3><p>数据元素常常还由若干个数据项组成. 它是数据不可分割的最小标识单位.</p>
+<img src="/2019/10/28/数据结构第1集-基础知识/数据.png" title="数据">
+
+<h3 id="数据的逻辑结构-Logical-Structure"><a href="#数据的逻辑结构-Logical-Structure" class="headerlink" title="数据的逻辑结构 (Logical Structure)"></a>数据的逻辑结构 (Logical Structure)</h3><p>数据元素之间的结构关系</p>
+<p>逻辑关系: 指数据元素之间的关联方式或邻接关系</p>
+<h4 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h4><p>任意两个点之间都没有邻接关系, 组织形式松散</p>
+<img src="/2019/10/28/数据结构第1集-基础知识/集合结构.jpg" title="集合结构">
+
+<h4 id="线性结构"><a href="#线性结构" class="headerlink" title="线性结构"></a>线性结构</h4><p>结点按逻辑关系依次排列成一条链, 结点之间一个一个依次相邻接.</p>
+<img src="/2019/10/28/数据结构第1集-基础知识/线性结构.jpg" title="线性结构">
+
+<h4 id="树形结构"><a href="#树形结构" class="headerlink" title="树形结构"></a>树形结构</h4><p>具有分支, 层次特性, 上层的结点可以和下层多个结点相邻接, 但下层结点只能和上层的一个结点相邻接.</p>
+<img src="/2019/10/28/数据结构第1集-基础知识/树形结构.jpg" title="树形结构">
+
+<h4 id="图结构"><a href="#图结构" class="headerlink" title="图结构"></a>图结构</h4><p>最复杂, 任意两个结点都可以相邻接</p>
+<img src="/2019/10/28/数据结构第1集-基础知识/图形结构.jpg" title="图形结构">
+
+<h3 id="数据的存储结构-数据的物理结构-Physical-Structure"><a href="#数据的存储结构-数据的物理结构-Physical-Structure" class="headerlink" title="数据的存储结构 / 数据的物理结构 (Physical Structure)"></a>数据的存储结构 / 数据的物理结构 (Physical Structure)</h3><p>数据的逻辑结构在计算机中的实现称为数据的存储结构(物理结构)</p>
+<p>数据结构的存储 = 数据元素的存储 + 逻辑关系的存储</p>
+<h4 id="顺序结构"><a href="#顺序结构" class="headerlink" title="顺序结构"></a>顺序结构</h4><p>顺序存储方式: 借助数据元素的相对存储位置来表示数据的逻辑关系</p>
+<p>方法: 将所有存储结点存储到一片连续的存储区</p>
+<p>特点</p>
+<pre><code>1. 预先分配好长度, 需要预估存储数据需要的存储量
+2. 插入和删除需要移动其它元素
+3. 存取快捷, 是随机存取结构</code></pre><h4 id="链式结构"><a href="#链式结构" class="headerlink" title="链式结构"></a>链式结构</h4><p>链式存储方式: 借助数据元素地址的指针表示数据的逻辑关系</p>
+<p>存放结点的存储单元分为两部分: 数据项 | 指针项</p>
+<p>特点</p>
+<pre><code>1. 动态分配, 不需要预先确定内存分配
+2. 插入和删除不需要移动其它元素
+3. 非随机存取结构</code></pre><h4 id="索引存储方式"><a href="#索引存储方式" class="headerlink" title="索引存储方式"></a>索引存储方式</h4><p>索引存储方式: 借助索引表中的索引指示各存储结点的存储位置</p>
+<h4 id="散列存储方式"><a href="#散列存储方式" class="headerlink" title="散列存储方式"></a>散列存储方式</h4><p>散列存储方式: 用散列函数指示各结点的存储位置</p>
+<h3 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h3><p>指在某种逻辑结构上施加的操作, 即对逻辑结构的加工</p>
+<h4 id="加工型运算"><a href="#加工型运算" class="headerlink" title="加工型运算"></a>加工型运算</h4><p>其操作改变原逻辑结构的值. 如: 结点个数, 结点内容等.</p>
+<h4 id="引用型运算"><a href="#引用型运算" class="headerlink" title="引用型运算"></a>引用型运算</h4><p>其操作不改变原逻辑结构的值.</p>
+<h4 id="基本运算"><a href="#基本运算" class="headerlink" title="基本运算"></a>基本运算</h4><pre><code>1. 建立
+2. 查找
+3. 读取
+4. 插入
+5. 删除</code></pre><h2 id="算法及描述"><a href="#算法及描述" class="headerlink" title="算法及描述"></a>算法及描述</h2><p>算法规定了求解给定类型问题所需的所有<strong>处理步骤</strong>和<strong>执行顺序</strong>, 使给定类型问题在<strong>有限时间</strong>内被求解</p>
+<p>一个算法是对特定问题求解步骤的一种描述, 它是指令的有穷序列.</p>
+<p>特性</p>
+<pre><code>1. 有穷性: 一个算法总是在执行有穷步后结束
+2. 确定性: 算法的每一步都必须是明确定义的
+3. 可行性: 算法中的每一步都是可以通过已经实现的操作来完成的
+4. 输入: 一个算法有零个或者多个输入, 这些输入取自于特定的对象集合
+5. 输出: 一个算法有一个或者多个输出, 它们是与输入有特定关系的量</code></pre><h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><h3 id="算法的设计应满足"><a href="#算法的设计应满足" class="headerlink" title="算法的设计应满足"></a>算法的设计应满足</h3><ol>
+<li>正确性: 对于合法的输入产生符合要求的输出</li>
+<li>易读性: 算法应易读, 便于交流, 这也是保证算法正确性的前提 (如: 添加注释)</li>
+<li>健壮性: 当输入非法数据时, 算法还能做出适当的反应而不会崩溃. 如: 输出错误信息; 算法中应该考虑适当的错误处理.</li>
+<li>时空性: 指算法的时间复杂度和空间复杂度, 算法分析主要分析算法的时间复杂度和空间复杂度, 目的是提高算法的效率</li>
+</ol>
+<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>算法运行时需要的总步数, 通常是问题规模的函数</p>
+<h4 id="确定算法的计算量"><a href="#确定算法的计算量" class="headerlink" title="确定算法的计算量"></a>确定算法的计算量</h4><p>合理地选择一种或几种操作作为<strong>标准操作</strong></p>
+<p>无特殊说明, 默认以赋值语句作为标准操作.</p>
+<p>确定每个算法共执行多少次标准操作, 并将此次数规定为该算法的计算量</p>
+<h4 id="算法的最坏情况时间复杂度"><a href="#算法的最坏情况时间复杂度" class="headerlink" title="算法的最坏情况时间复杂度"></a>算法的最坏情况时间复杂度</h4><p>以算法在所有输入下的计算量的最大值作为算法的计算量</p>
+<h4 id="算法的平均情况时间复杂度"><a href="#算法的平均情况时间复杂度" class="headerlink" title="算法的平均情况时间复杂度"></a>算法的平均情况时间复杂度</h4><p>以算法在所有输入下的计算量的加权平均值作为算法的计算量</p>
+<h4 id="渐近时间复杂度"><a href="#渐近时间复杂度" class="headerlink" title="渐近时间复杂度"></a>渐近时间复杂度</h4><p>T(n) = O(f(n)) </p>
+<p>f(n)为问题规模n的某个函数</p>
+<p>大O表示法也称为渐进表示法</p>
+<p>T(n)称为算法的渐进时间复杂度, 简称时间复杂度</p>
+<p>常见的时间复杂度按数量级递增排列依次为</p>
+<p>O(1)     &lt; O(log2(n)) &lt; O(n)     &lt; O(nlog2(n)) &lt; O(n^2) &lt; O(n^c)     &lt; O(2^n)</p>
+<p>常数阶 &lt; 对数阶     &lt; 线性阶 &lt; 线性对数阶 &lt; 平方阶 &lt; 多项式阶 &lt; 指数阶</p>
+<p>通常认为:</p>
+<p>常数阶O(1), 算法的时间复杂度与输入规模n无关</p>
+<p>具有指数阶的算法是实际不可计算的</p>
+<p>阶数低于平方阶的算法是高效率的</p>
+<h3 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h3><p>S(n) = O(g(n))</p>
+<p>g(n)为问题规模n的某个函数</p>
+<p>算法执行时所占用的存储空间, 通常是问题规模的函数</p>
+<p>是对一个算法在运行过程中临时占用存储空间大小的量度.</p>
+<p>一个算法在执行期间所需要的存储空间量包括以下部分</p>
+<pre><code>1. 程序代码所占用的空间
+2. 输入数据所占用的窠
+3. 辅助变量所占用的空间</code></pre><p>我们在估算空间复杂度时, 一般只分析辅助变量所占用的空间</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/11/Clause-and-Comparative-and-The-superlative/" rel="next" title="Clause and Comparative and The superLative">
+                <i class="fa fa-chevron-left"></i> Clause and Comparative and The superLative
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/02/一篇文章学会JDBC/" rel="prev" title="一篇文章学会JDBC">
+                一篇文章学会JDBC <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/touxiang.jpg" alt="云淡风轻">
+            
+              <p class="site-author-name" itemprop="name">云淡风轻</p>
+              <p class="site-description motion-element" itemprop="description">Objective-C, Swift, DataBase</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机解决问题的步骤"><span class="nav-number">1.1.</span> <span class="nav-text">计算机解决问题的步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构-Data-Structure"><span class="nav-number">1.2.</span> <span class="nav-text">数据结构 (Data Structure)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据的逻辑结构"><span class="nav-number">1.3.</span> <span class="nav-text">数据的逻辑结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构和算法和程序的关系"><span class="nav-number">1.4.</span> <span class="nav-text">数据结构和算法和程序的关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念和术语"><span class="nav-number">2.</span> <span class="nav-text">基本概念和术语</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据-Data"><span class="nav-number">2.1.</span> <span class="nav-text">数据 (Data)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据元素-Data-Element"><span class="nav-number">2.2.</span> <span class="nav-text">数据元素 (Data Element)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据项-Data-Item"><span class="nav-number">2.3.</span> <span class="nav-text">数据项 (Data Item)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据的逻辑结构-Logical-Structure"><span class="nav-number">2.4.</span> <span class="nav-text">数据的逻辑结构 (Logical Structure)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#集合"><span class="nav-number">2.4.1.</span> <span class="nav-text">集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线性结构"><span class="nav-number">2.4.2.</span> <span class="nav-text">线性结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#树形结构"><span class="nav-number">2.4.3.</span> <span class="nav-text">树形结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图结构"><span class="nav-number">2.4.4.</span> <span class="nav-text">图结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据的存储结构-数据的物理结构-Physical-Structure"><span class="nav-number">2.5.</span> <span class="nav-text">数据的存储结构 / 数据的物理结构 (Physical Structure)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#顺序结构"><span class="nav-number">2.5.1.</span> <span class="nav-text">顺序结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#链式结构"><span class="nav-number">2.5.2.</span> <span class="nav-text">链式结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#索引存储方式"><span class="nav-number">2.5.3.</span> <span class="nav-text">索引存储方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#散列存储方式"><span class="nav-number">2.5.4.</span> <span class="nav-text">散列存储方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算"><span class="nav-number">2.6.</span> <span class="nav-text">运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#加工型运算"><span class="nav-number">2.6.1.</span> <span class="nav-text">加工型运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引用型运算"><span class="nav-number">2.6.2.</span> <span class="nav-text">引用型运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本运算"><span class="nav-number">2.6.3.</span> <span class="nav-text">基本运算</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法及描述"><span class="nav-number">3.</span> <span class="nav-text">算法及描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法分析"><span class="nav-number">4.</span> <span class="nav-text">算法分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法的设计应满足"><span class="nav-number">4.1.</span> <span class="nav-text">算法的设计应满足</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间复杂度"><span class="nav-number">4.2.</span> <span class="nav-text">时间复杂度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#确定算法的计算量"><span class="nav-number">4.2.1.</span> <span class="nav-text">确定算法的计算量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法的最坏情况时间复杂度"><span class="nav-number">4.2.2.</span> <span class="nav-text">算法的最坏情况时间复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法的平均情况时间复杂度"><span class="nav-number">4.2.3.</span> <span class="nav-text">算法的平均情况时间复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#渐近时间复杂度"><span class="nav-number">4.2.4.</span> <span class="nav-text">渐近时间复杂度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空间复杂度"><span class="nav-number">4.3.</span> <span class="nav-text">空间复杂度</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">云淡风轻</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
